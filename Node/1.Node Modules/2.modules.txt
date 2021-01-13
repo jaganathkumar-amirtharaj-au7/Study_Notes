@@ -1,0 +1,89 @@
+Modules:
+-->modules are similar to local objects, if we need one method to be accessable inside another module, 
+we can use MODULE.EXPORT
+-->eg:-module.export.message=message;
+-->now we can access the message module outside the module.
+-->this is similar to connecting one component of react app with another component using export default
+
+1)Loading Modules:-
+--> Modules can be loadded using "require", and this can be used to load a file eg:-const indexfile=require('./)
+
+index.js file:-
+function log(mes){
+    console.log("username"+mes)
+}
+
+module.exports.log=log; //module exported as a object,
+//to export modules as  a function 
+module.exports=log;     //exports the log function only not as a object
+
+app.js file:-
+const logger=require('./index');
+console.log(logger.log("jagan"))    //module exported as object and used 
+console.log(logger("jagan"))        //module exported just as a function
+
+2)Node Modules Wrapper:-
+-->in line no 1:-(function(module,exports,__filename,__dirname,require){    //with this wrapper we can access all the properties in the parameters like path of dir,file etc..
+    statement;
+})
+
+Important Modules:-
+1.filesystem
+2.http
+3.outside
+4.paths
+5.process
+6.querrystring
+7.streams
+
+1.path:-
+const path=require('path');
+const pathobj=path.parse(__filename);
+console.log(pathobj)
+
+
+2.os:-
+const os=require('os');
+const freememory=os.freemem();
+const totalmemory=os.totalmem();
+
+//Template String
+cosole.log(`totalmemory ${totalmemory}`)
+
+3.filesystem:
+const fs=require('fs);
+fs.readdir('./',(err,files)=>{
+    if(err) console.log(err)
+    else console.log(files)
+})
+
+4.EventEmitter:
+-->it shows that an event has been raised
+const EventEmitter=require('events');    //we declared EventEmitter in caps cause its a class, its an EventEmitter class
+const emitter=new EventEmitter();//here we are creating an object for the emitter class
+//creaing an listner;
+1.emitter.addeventlistner() or emitter.on('eventname',()=>{console.log("event listned")})
+//creaing an event:-
+emitter.emit('eventname');//this should be at last cause it checks async from bottom to top
+
+5.EventArgument:-
+-->here we are raising event with arguments
+//creaing an listner;
+ emitter.on('eventname',(e)=>{console.log("event listned",e)})
+//creaing an event:-
+emitter.emit('eventname'{"id":1,"name":"jagan"});//this should be at last cause it checks async from bottom to top
+
+5.http Module:
+const http=require('http');
+const server=http.createServer((req,res)=>{ //http server
+        if(req.url==='/'){
+            res.write('hello')
+            res.end()
+        }
+        if(req.url==='/api'){
+            res.write(JSON.stringify([1,2,3,4]))
+            res.end()
+        }
+})
+server.listen(4000) 
+console.log("server listing at port 4000")  //event listner

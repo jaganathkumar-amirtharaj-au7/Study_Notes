@@ -1,0 +1,55 @@
+REST-Representaion state Transfer
+
+CRUD-create,read,update,delete
+
+Standered http requests:
+get,post,put,delete
+
+
+Express:-
+setting an environment variable using set on windows
+-->set PORT=5000
+sets the port globally,
+-->using the default port or creating a port for running the server
+
+-->const port =process.enve.PORT || 3000;
+app.listen(port,()=>console.log(`${port}`))
+
+ROUTE PARAMETERS:-
+GETTING  SINGLE ID VALUE:-
+app.get('/cources/:id',(req,res)=>{
+        res.send(req.params.id);
+});
+GETTING MULTIPLE ID VALUES:-
+app.get('/cources/:year:month,(req,res)=>{
+    res.send(req.params)
+});     //this gives the object with year and month
+
+HOW TO PASS A QUERRY STRING:-
+localhost:3001/2001/06?sortBy=name;//passing in browser url
+
+-->getting the querry 
+app.get(''/cources/:year:month',(req,res=>{
+    res.send(req.query)
+}))
+
+Program:-
+const express=require('express');
+const app=express();
+// describing routes
+app.get('/',(req,res)=>{
+    res.send('helloWorld');
+});
+app.get('/cources/:id',(req,res)=>{
+        res.send(req.params.id);
+})
+const port =process.env.PORT || 3001
+app.listen(port,()=>console.log(`listining at port ${port }`))
+
+CRUD Operation:-
+Get:
+app.get('/cources/:id',(req,res)=>{
+        const found=courses.find(d=>d.id===parseInt(req.params.id))
+        if(!found)res.status(404).send(console.log("course not found"))     //here if response status===404 logging error
+        console.log(found)  //if course found we are logging the result
+})

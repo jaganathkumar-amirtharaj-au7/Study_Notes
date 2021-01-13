@@ -1,0 +1,8 @@
+Global Objects and Modules:-
+-->In js we use the global objects like setTimeout(),setInterval(),all are declared in background as global.setInterval(),global.setTimeout(),
+-->but in node there is no Windows objects, (i.e), there is no global object 
+-->instead we have modules and each file is an invidual modules
+-->the variable declared inside a module is not accessable outside particular module
+Reason for not having global variables:-
+--->as a variable or a function is declared as global it is accessable outside that file, this might cause problems 
+with other files so there is no concept of global variable or function in node
