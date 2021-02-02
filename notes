@@ -1,0 +1,15 @@
+Getting Inputs:
+1)getting number of array elements and getting user input according to it
+number of elements 
+n = int(input("Enter number of elements : ")) 
+Below line read inputs from user using map() function  
+a = list(map(int,input("\nEnter the numbers : ").strip().split()))[:n]
+
+2)Reverse a String:-
+string="jagan"
+print(string[::-1])
+
+3)Removing Duplicate from array list
+mylist = ["a", "b", "a", "c", "c"]
+mylist = list( dict.fromkeys(mylist) )
+print(mylist)
