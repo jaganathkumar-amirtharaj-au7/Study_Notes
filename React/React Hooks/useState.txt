@@ -1,0 +1,5 @@
+import React,{useState} from 'react';
+//this imports react usestate 
+[state,setState]=useState(0)
+//here we are declaring initilstate as state and setState can be used for setting state,
+and 0 in useState contains the initilstate
